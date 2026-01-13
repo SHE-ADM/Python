@@ -1,3 +1,7 @@
+import os
+
+
+
 print("""      
       
 ░██████╗░█████╗░██████╗░░█████╗░██████╗░  ███████╗██╗░░██╗██████╗░██████╗░███████╗░██████╗░██████╗
@@ -17,6 +21,12 @@ print('4. Sair\n')
 opcao_escolhida = input('Escolha uma opção: ')
 opcao_escolhida = int(opcao_escolhida)    
 
+def fim_app():
+    os.system('cls')      
+    print('\nObrigado por usar o sistema de restaurantes!\n')     
+
+
+
 if opcao_escolhida == 1:
    print('Cadastrar Restaurante')
 
@@ -27,5 +37,5 @@ elif opcao_escolhida == 3:
    print('Ativar Restaurante')
 
 else:
-   print('Sair do Programa')
+      fim_app()
    
