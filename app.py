@@ -1,5 +1,8 @@
 import os
 
+restaurantes = []
+
+
 def exibir_nome():
    print("""
                   
@@ -18,13 +21,25 @@ def exibir_opcoes():
     print('3. Ativar Restaurante')
     print('4. Sair\n')
     
+
 def opcao_invalida():
     os.system('cls')      
     print('\nOpção inválida! Tente novamente.\n')  
 
+
 def fim_app():
     os.system('cls')      
     print('\nObrigado por usar o sistema de restaurantes!\n')     
+
+
+def cadadastrar_restaurante():
+   os.system('cls')      
+   print('--- Cadastro de Restaurante ---\n')   
+   nome_restaurante = input('Digite o nome do restaurante: ')
+   restaurantes.append(nome_restaurante)
+   print(f'\nRestaurante "{nome_restaurante}" cadastrado com sucesso!\n')
+   main()
+   
 
 def escolher_opcao_usando_if():  
    try:
@@ -32,7 +47,7 @@ def escolher_opcao_usando_if():
       opcao_escolhida = int(opcao_escolhida)    
 
       if opcao_escolhida == 1:
-         print('Cadastrar Restaurante')
+         cadadastrar_restaurante()
 
       elif opcao_escolhida == 2:
          print('Listar Restaurantes')
@@ -48,6 +63,7 @@ def escolher_opcao_usando_if():
    except ValueError:
       opcao_invalida()  
          
+
 def escolher_opcao_usando_match():   
    opcao_escolhida = input('Escolha uma opção: ')
    opcao_escolhida = int(opcao_escolhida)    
@@ -65,11 +81,13 @@ def escolher_opcao_usando_match():
       case _:
          fim_app()      
         
+
 def main():
     exibir_nome() 
     exibir_opcoes()
     escolher_opcao_usando_if()
            
+
 if __name__ == '__main__':
    os.system('cls')  
    main()
