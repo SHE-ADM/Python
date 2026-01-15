@@ -18,25 +18,35 @@ def exibir_opcoes():
     print('3. Ativar Restaurante')
     print('4. Sair\n')
     
+def opcao_invalida():
+    os.system('cls')      
+    print('\nOpção inválida! Tente novamente.\n')  
+
 def fim_app():
     os.system('cls')      
     print('\nObrigado por usar o sistema de restaurantes!\n')     
 
-def escolher_opcao_usando_if():   
-   opcao_escolhida = input('Escolha uma opção: ')
-   opcao_escolhida = int(opcao_escolhida)    
+def escolher_opcao_usando_if():  
+   try:
+      opcao_escolhida = input('Escolha uma opção: ')
+      opcao_escolhida = int(opcao_escolhida)    
 
-   if opcao_escolhida == 1:
-      print('Cadastrar Restaurante')
+      if opcao_escolhida == 1:
+         print('Cadastrar Restaurante')
 
-   elif opcao_escolhida == 2:
-      print('Listar Restaurantes')
-      
-   elif opcao_escolhida == 3:
-      print('Ativar Restaurante')
+      elif opcao_escolhida == 2:
+         print('Listar Restaurantes')
+         
+      elif opcao_escolhida == 3:
+         print('Ativar Restaurante')
 
-   else:
+      elif opcao_escolhida == 4:
          fim_app()
+
+      else:
+         opcao_invalida()
+   except ValueError:
+      opcao_invalida()  
          
 def escolher_opcao_usando_match():   
    opcao_escolhida = input('Escolha uma opção: ')
@@ -54,13 +64,15 @@ def escolher_opcao_usando_match():
 
       case _:
          fim_app()      
-    
+        
 def main():
     exibir_nome() 
     exibir_opcoes()
-    escolher_opcao_usando_match()
+    escolher_opcao_usando_if()
+   
         
 if __name__ == '__main__':
-    main()
+   os.system('cls')  
+   main()
     
     
