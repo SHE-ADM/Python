@@ -69,8 +69,7 @@ def main():
     exibir_nome() 
     exibir_opcoes()
     escolher_opcao_usando_if()
-   
-        
+           
 if __name__ == '__main__':
    os.system('cls')  
    main()
