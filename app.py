@@ -1,4 +1,5 @@
 import os
+from tracemalloc import start
 
 restaurantes = []
 
@@ -38,9 +39,22 @@ def cadadastrar_restaurante():
    nome_restaurante = input('Digite o nome do restaurante: ')
    restaurantes.append(nome_restaurante)
    print(f'\nRestaurante "{nome_restaurante}" cadastrado com sucesso!\n')
+   input('Digite Enter para voltar ao menu principal...')
    main()
    
+   
+def listar_restaurante():
+   os.system('cls')
+   print('--- Lista de Restaurantes ---\n')   
 
+   for restaurante in restaurantes:
+      print(f'{restaurante}')
+      print()  
+   
+   input('Digite Enter para voltar ao menu principal...')
+   main()
+   
+   
 def escolher_opcao_usando_if():  
    try:
       opcao_escolhida = input('Escolha uma opção: ')
@@ -50,7 +64,7 @@ def escolher_opcao_usando_if():
          cadadastrar_restaurante()
 
       elif opcao_escolhida == 2:
-         print('Listar Restaurantes')
+         listar_restaurante()
          
       elif opcao_escolhida == 3:
          print('Ativar Restaurante')
