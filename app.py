@@ -1,11 +1,9 @@
 import os
 from tracemalloc import start
 
-restaurantes = [{'nome': 'Praça1', 'categoria': 'Comida japonesa', 'ativo': False},
-                {'nome': 'Praça2', 'categoria': 'Comida japonesa', 'ativo': False},
-                {'nome': 'Praça3', 'categoria': 'Comida japonesa', 'ativo': False}]
-
-
+restaurantes = [{'nome': 'Praça1', 'categoria': 'Japonesa', 'ativo': False},
+                {'nome': 'Praça2', 'categoria': 'Italiana', 'ativo': True},
+                {'nome': 'Praça3', 'categoria': 'Brasileira', 'ativo': True}]
 
 def exibir_nome():
    print("""
@@ -41,7 +39,9 @@ def opcao_invalida():
 def cadadastrar_restaurante(): 
    exibir_subtitulos('Cadastro de novos restaurantes')
    nome_restaurante = input('Digite o nome do restaurante: ')
-   restaurantes.append(nome_restaurante)
+   dados_do_restaurante = {'nome': nome_restaurante, 'categoria': '', 'ativo': False}
+   restaurantes.append(dados_do_restaurante) 
+   restaurantes.append({'nome': nome_restaurante, 'categoria': '', 'ativo': False})
    print(f'\nRestaurante "{nome_restaurante}" cadastrado com sucesso!\n')
    voltar_menu_principal()
       
@@ -84,8 +84,7 @@ def escolher_opcao_usando_if():
 def main():
     exibir_nome() 
     exibir_opcoes()
-    escolher_opcao_usando_if()
-           
+    escolher_opcao_usando_if()        
 
 if __name__ == '__main__':
    os.system('cls')  
