@@ -39,9 +39,9 @@ def opcao_invalida():
 def cadadastrar_restaurante(): 
    exibir_subtitulos('Cadastro de novos restaurantes')
    nome_restaurante = input('Digite o nome do restaurante: ')
-   dados_do_restaurante = {'nome': nome_restaurante, 'categoria': '', 'ativo': False}
+   categoria = input('Digite a categoria do restaurante: ')
+   dados_do_restaurante = {'nome': nome_restaurante, 'categoria':categoria, 'ativo': False}
    restaurantes.append(dados_do_restaurante) 
-   restaurantes.append({'nome': nome_restaurante, 'categoria': '', 'ativo': False})
    print(f'\nRestaurante "{nome_restaurante}" cadastrado com sucesso!\n')
    voltar_menu_principal()
       
@@ -59,6 +59,22 @@ def listar_restaurante():
 def fim_app():
     exibir_subtitulos('Obrigado por usar o sistema de restaurantes!')        
  
+def alterar_status_restaurante():
+   exibir_subtitulos('Ativar Restaurante')
+   nome_restaurante = input('Digite o nome do restaurante que deseja ativar: ') 
+   
+   restaurante_encontrado = False
+   for restaurante in restaurantes:
+      if nome_restaurante == restaurante['nome']:
+         restaurante_encontrado = True         
+         restaurante['ativo'] = not restaurante['ativo']
+         # fazendo uso de ternário
+         mensagem = f'O restaurante {nome_restaurante} foi ativado com sucesso!' if restaurante['ativo'] else f'O restaurante {nome_restaurante} foi desativado com sucesso!'
+         print(mensagem)
+   if not restaurante_encontrado:
+      print(f'Não foi encontrado um restaurante com o nome "{nome_restaurante}".')
+      
+
 def escolher_opcao_usando_if():  
    try:
       opcao_escolhida = input('Escolha uma opção: ')
@@ -71,7 +87,7 @@ def escolher_opcao_usando_if():
          listar_restaurante()
          
       elif opcao_escolhida == 3:
-         print('Ativar Restaurante')
+         alterar_status_restaurante()
 
       elif opcao_escolhida == 4:
          fim_app()
