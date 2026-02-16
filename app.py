@@ -29,7 +29,7 @@ def exibir_opcoes():
     print('4. Sair\n')
     
 def exibir_subtitulos(texto):
-   '''Método para exibir subtítulos'''
+   '''Método para exibir subtítulos '''
    
    os.system('cls')
    linha = '*' * (len(texto) + 4)
